@@ -6,15 +6,30 @@
     <style type="text/css">
         canvas {
             border: 1px solid black;
+            z-index: 1;
         }
         body {
             margin: 0;
 
+        }
+        .form1 {
+            position: absolute;
+            left: 100px;
+            top: 100px;
+        }
+        .input1 {
+            opacity: 0.2;
         }
     </style>
 </head>
 <body>
     <canvas></canvas>
     <script src="../javascript/canvas.js"></script>
+    <form class="form1">
+        Name:
+        <input type="text" name="name" class="input1">
+        <br><br>
+        <input type="submit" name="signIn" value="sign in">
+    </form>
 </body>
 </html>
