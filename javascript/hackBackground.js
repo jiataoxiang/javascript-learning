@@ -12,14 +12,13 @@ var columns = canvas.width / frameSize;
 //initialize
 var drops = [];
 for(var i = 0; i < columns; i++) {
-    drops[i] = 1;
+    drops[i] = Math.random() * 100;
 }
 //console.log(drops);
 
 function draw() {
-    // context.clearRect(0,0, innerWidth, innerHeight);
-    context.fillStyle = "rgba(0,0,0,0,0.5)";
-    context.clearRect(0,0, canvas.width, canvas.height);
+    context.fillStyle = 'rgba(0,0,0,0.1)';
+    context.fillRect(0,0, canvas.width, canvas.height);
 
     context.fillStyle = "#0f0";
     context.font = frameSize + "px arial";
