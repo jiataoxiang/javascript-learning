@@ -22,7 +22,7 @@ function draw() {
 
     context.fillStyle = "#0f0";
     context.font = frameSize + "px arial";
-    for(var i = 0; i < drops.length; i++) {
+    for(var i = 40; i < drops.length - 10; i++) {
         console.log(drops);
         var text = letters[Math.floor(Math.random() * letters.length)];
         //console.log(text);
