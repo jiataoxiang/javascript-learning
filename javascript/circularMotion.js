@@ -5,8 +5,8 @@ canvas.height = window.innerHeight;
 let context = canvas.getContext('2d');
 
 const mouse = {
-    x: undefined,
-    y: undefined
+    x: 0,
+    y: 0
 };
 
 const colors = [
@@ -45,6 +45,7 @@ function Particle(x, y, radius, color) {
     this.radians = Math.random() * Math.PI * 2;
     this.velocity = 0.05;
     this.distFromCenter = randIntFromRange(50,120);
+    this.lastMouse = {x: x, y:y};
 
     this.update = function () {
         const lastPoint = {
@@ -53,8 +54,12 @@ function Particle(x, y, radius, color) {
         };
         //Move points over time
         this.radians += this.velocity;
-        this.x = x + Math.cos(this.radians) * this.distFromCenter;
-        this.y = y + Math.sin(this.radians) * this.distFromCenter;
+        //Drag effect
+        this.lastMouse.x += (mouse.x - this.lastMouse.x) * 0.05;
+        this.lastMouse.y += (mouse.y - this.lastMouse.y) * 0.05;
+        //circular motion
+        this.x = this.lastMouse.x + Math.cos(this.radians) * this.distFromCenter;
+        this.y = this.lastMouse.y + Math.sin(this.radians) * this.distFromCenter;
         this.draw(lastPoint);
     };
 
@@ -78,7 +83,7 @@ let particles = [];
 function init() {
     particles = [];
     //particles.push(new Particle(canvas.width / 2, canvas.height / 2, 5, 'blue'));
-    for (let i = 0; i < 50 ; i++) {
+    for (let i = 0; i < 80 ; i++) {
         const radius = (Math.random() * 2) + 1;
         particles.push(new Particle(innerWidth / 2, innerHeight / 2, radius, randColor()));
     }
