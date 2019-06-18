@@ -92,7 +92,7 @@ function init() {
 function animate() {
     requestAnimationFrame(animate);
     //context.clearRect(0, 0, innerWidth, innerHeight);
-    context.fillStyle = 'rgba(255,255,255,0.05)';
+    context.fillStyle = 'rgba(0,0,0,0.05)';
     context.fillRect(0,0, canvas.width, canvas.height);
     particles.forEach(particle => {
         particle.update();
